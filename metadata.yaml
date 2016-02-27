@@ -1,0 +1,29 @@
+_repo: Old-English-Libraries-The-Making-Collection-and-Use-of-Books-During-the-Middle-Ages_1615
+creator:
+  author:
+    agent_name: Savage, Ernest Albert
+    birthdate: 1877
+    deathdate: 1966
+    gutenberg_agent_id: '676'
+    url: http://www.gutenberg.org/2009/agents/676
+description: ''
+gutenberg_bookshelf: Bibliomania
+gutenberg_issued: '1999-01-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '1615'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'Book collecting -- England -- History -- To 1500'
+- !lcsh 'Manuscripts, Medieval -- England'
+- !lcsh 'Library catalogs -- England'
+- !lcsh 'Books and reading -- England -- History -- To 1500'
+- !lcsh 'Scriptoria -- England'
+- !lcc 'Z'
+- !lcsh 'Libraries -- England -- History -- 400-1400'
+title: "Old English Libraries\r\nThe Making, Collection, and Use of Books During the\
+  \ Middle Ages"
+url: http://www.gutenberg.org/ebooks/1615
