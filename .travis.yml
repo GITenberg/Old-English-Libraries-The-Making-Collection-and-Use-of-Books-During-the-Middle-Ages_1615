@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: XX6qysMWsGMKTB5xNvUmJ7x5zO7wnxQCclYKgodDO8RSYgXMKvvPi9GHqci2kXEpX9tGBj9wTyBJoe6XUw6gedhE9bvxBbSq/auOz8TELb+qjUk24+htGbN1086KBepGb/YPX/p6J8YJx8DnAxRSGmBABmz+TBi0JXWsMCwtD35QvhLokge6cEZT0w7g/TeNE3Ehi+I/TVb3njzLp/o88Q687qWqjdW3SJoXxnBrum8OYvsz2Z1HV80v3y+yHLVW3IHqJEUpYXzaBuhQfoAfA8Qpa0JMjsKSmjpRpMN5bSqlPuDBy+DnFXq6MqL7JRhKSbnhwfax/eyyxneFRvG8YwslwgmYqFPl9QjT9fqmQURjx4zvwbbxp40IbxrZzET7SGnr1Y07DJErURn1M8QQ0wfc7FC3MjmhlJAXvqlLYbOEjcGhMte+yKMEo65NElCQxizLWqz4+w86Hd6XAPUFy0ls3fqDmK+Yivt492D2yBH/WC4KonrBp7m1Fdy6cXXVXIgqR2HdM/i5MpQI7Pah5wqWGgzwXJYBHyQJ11kaKtwGaU0G7W630SWdIx3wed9hPtQWMFQfI9FQCwM7IVDt/UWSyW5ttjFpM1sHUBA9D//kpRCNlHWbdE2kD17m92jbUcYSKlb8rW6hRqB96JtHV+CaTwzhg3iFth/YjONo4h0=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/Old-English-Libraries-The-Making-Collection-and-Use-of-Books-During-the-Middle-Ages_1615
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
