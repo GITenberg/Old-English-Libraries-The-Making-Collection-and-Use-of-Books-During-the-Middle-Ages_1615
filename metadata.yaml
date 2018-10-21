@@ -1,5 +1,5 @@
 _repo: Old-English-Libraries-The-Making-Collection-and-Use-of-Books-During-the-Middle-Ages_1615
-_version: 0.2.0
+_version: 0.2.1
 covers:
 - cover_type: archival
   image_path: 1615-h/images/cover.jpg
@@ -30,6 +30,7 @@ subjects:
 - !lcsh 'Scriptoria -- England'
 - !lcc 'Z'
 - !lcsh 'Libraries -- England -- History -- 400-1400'
+- GITenberg
 title: "Old English Libraries\r\nThe Making, Collection, and Use of Books During the\
   \ Middle Ages"
 url: http://www.gutenberg.org/ebooks/1615
